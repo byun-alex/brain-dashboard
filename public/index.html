@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brain · Home Base</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <main class="shell">
+      <!-- ===== Greeting / Jarvis header ===== -->
+      <header class="hero">
+        <div class="hero-left">
+          <div class="orb" id="orb"><span></span><span></span><span></span></div>
+        </div>
+        <div class="hero-text">
+          <p class="date" id="date">—</p>
+          <h1 id="greeting">Booting…</h1>
+          <p class="subtitle" id="subtitle">What would you like to do?</p>
+        </div>
+      </header>
+
+      <!-- ===== Quick launch buttons ===== -->
+      <section class="quick" id="quick">
+        <button class="q-btn primary" data-prompt="/catchup">
+          <span class="q-ic">↺</span>
+          <span class="q-label">Catch me up</span>
+          <span class="q-sub">where did I leave off?</span>
+        </button>
+        <button class="q-btn" data-prompt="Look at my To Do current focus and tell me the single best next thing to work on, and why. Keep it short.">
+          <span class="q-ic">➜</span>
+          <span class="q-label">What's next?</span>
+          <span class="q-sub">pick my next move</span>
+        </button>
+        <button class="q-btn" data-prompt="Which of my ideas has the thinnest blueprint and would benefit most from development next? Give me 2-3 options, short.">
+          <span class="q-ic">✦</span>
+          <span class="q-label">Develop an idea</span>
+          <span class="q-sub">what needs work?</span>
+        </button>
+        <button class="q-btn" data-prompt="Summarize what's currently in my vault — ideas and their stages — in a short scannable list.">
+          <span class="q-ic">▦</span>
+          <span class="q-label">Vault summary</span>
+          <span class="q-sub">the big picture</span>
+        </button>
+      </section>
+
+      <!-- ===== Projects ===== -->
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Projects</h2>
+          <span class="badge" id="proj-count">0</span>
+        </div>
+        <div class="proj-grid" id="proj-grid"></div>
+      </section>
+
+      <!-- ===== Panels ===== -->
+      <section class="grid">
+        <!-- To Do -->
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Current Focus</h2>
+            <span class="badge" id="todo-count">0</span>
+          </div>
+          <ul class="todo-list" id="todo-list"></ul>
+        </div>
+
+        <!-- Ideas -->
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Ideas</h2>
+            <span class="badge" id="idea-count">0</span>
+          </div>
+          <ul class="idea-list" id="idea-list"></ul>
+        </div>
+      </section>
+
+      <!-- ===== Jarvis (chat + terminal) ===== -->
+      <section class="panel jarvis">
+        <div class="panel-head">
+          <div class="tabs">
+            <button class="tab active" data-tab="chat">⌁ Jarvis</button>
+            <button class="tab" data-tab="term">▶ Terminal</button>
+          </div>
+          <span class="ctx" id="ctx">context: everything</span>
+          <span class="status" id="status">ready</span>
+        </div>
+
+        <!-- chat view -->
+        <div class="view" id="view-chat">
+          <div class="controls">
+            <label class="ctl">Model
+              <select id="model">
+                <option value="">default</option>
+                <option value="opus">Opus 4.8</option>
+                <option value="sonnet">Sonnet 4.6</option>
+                <option value="haiku">Haiku 4.5</option>
+              </select>
+            </label>
+            <button id="caveman-btn" class="toggle" type="button">caveman: off</button>
+            <button id="clear-btn" class="ghost" type="button">clear chat</button>
+          </div>
+
+          <div class="chat" id="chat">
+            <div class="msg jarvis-msg">
+              <div class="msg-body">Standing by, Alax. Hit a button above, or just ask me anything.</div>
+            </div>
+          </div>
+
+          <div class="composer-wrap">
+            <div class="cmd-menu" id="cmd-menu" hidden></div>
+            <form class="composer" id="composer">
+              <input id="input" type="text" placeholder="Ask Jarvis…  (type / for commands)" autocomplete="off" />
+              <button type="submit" id="send">Send</button>
+            </form>
+            <div class="session-bar" id="session-bar">new session · no tokens used yet</div>
+          </div>
+        </div>
+
+        <!-- terminal view -->
+        <div class="view" id="view-term" hidden>
+          <div id="term"></div>
+          <div class="term-bar">
+            <span id="term-hint">Real Claude terminal — <b>/model</b>, <b>/caveman</b>, streaming, everything works here.</span>
+            <button id="term-reconnect" class="ghost" type="button">restart</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

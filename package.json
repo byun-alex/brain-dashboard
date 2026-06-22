@@ -1,0 +1,10 @@
+{
+  "name": "brain-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "main": "server.js",
+  "dependencies": {
+    "@homebridge/node-pty-prebuilt-multiarch": "^0.13.1",
+    "ws": "^8.21.0"
+  }
+}
