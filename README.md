@@ -1,6 +1,6 @@
 # Brain Dashboard ("Jarvis")
 
-A local web app that turns a bare terminal into a visual home base for working with Claude across every project on my machine — an Iron-Man-style "Jarvis" launch screen. Chat with Claude or drop into a real embedded Claude terminal, switch which project Claude is working in, and watch token cost in real time.
+A local web app that turns a bare terminal into a visual home base for working with Claude across every project on my machine, like an Iron-Man-style "Jarvis" launch screen. Chat with Claude or drop into a real embedded Claude terminal, switch which project Claude is working in, and watch token cost in real time.
 
 Built to make an AI assistant feel like a control center, not a command line.
 
