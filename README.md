@@ -41,4 +41,4 @@ Requires the Claude CLI installed and on PATH. The terminal pane loads xterm.js 
 Node.js · `ws` (WebSockets) · `@homebridge/node-pty-prebuilt-multiarch` (ConPTY) · xterm.js · vanilla JS/HTML/CSS · Claude CLI.
 
 ---
-*Personal project demonstrating Node back-end work, real-time WebSocket/PTY integration, and practical orchestration of an AI CLI into a usable app. Built by Alex Byun.*
+*Personal project demonstrating Node back-end work, real-time WebSocket/PTY integration, and practical orchestration of an AI CLI into a usable app. Built by Alex.*
